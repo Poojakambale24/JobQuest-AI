@@ -57,7 +57,7 @@ function AddNewInterview() {
         jobDesc:jobDesc,
         jobExperience:jobExperience,
         createdBy:user?.primaryEmailAddress?.emailAddress,
-        createdAt : moment().format('DD-MM-yyyy'),
+        createdAt:moment().format('DD-MM-yyyy'),
     }).returning({mockId:MockInterview.mockId});
 
     console.log("Inserted ID :",resp);
@@ -74,15 +74,21 @@ function AddNewInterview() {
  
 
   return (
-    <div>
-      <div
-        className="p-10 border rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all"
-        onClick={() => setOpenDialog(true)}
-      >
-        <h2 className="font-bold text-lg text-center">+ Add New</h2>
+    <div >
+     <h2 className="text-2xl p-4 flex items-center gap-2 font-bold">Getting started
+      <img src="icons8-arrow-50.png" alt="start" className="h-8 "/>
+      </h2>
+     <div className=" flex items-center gap-8">
+      
+        <div
+          className="p-10 w-96  ml-1 rounded-lg bg-gray-800 hover:scale-105 hover:shadow-md cursor-pointer  transition-all"onClick={() => setOpenDialog(true)}>
+          <h2 className="font-bold text-lg text-center">+ Add New</h2>
+        </div>
+       
       </div>
+    
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-2xl border-none bg-zinc-950">
           <DialogHeader>
             <DialogTitle className="text-2xl">
               
@@ -93,22 +99,23 @@ function AddNewInterview() {
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={onSubmit}>
-            <h3 className="font-semibold mb-4">
+            <h3 className="font-semibold mb-4 text-slate-400">
               Add details about your Preferred position, description, and experience:
             </h3>
   
             <div className="mt-7 my-3">
               <label>Preferred Role/Job Position</label>
-              <Input
+              <Input className="bg-zinc-900 border-none"
                 placeholder="Ex. Web Developer"
                 required
                 onChange={(event) => setJobPosition(event.target.value)}
+                
               />
             </div>
   
             <div className="my-3">
               <label>Job Description/Tech Stack (In Short)</label>
-              <Textarea
+              <Textarea className="bg-zinc-900 border-none"
                 placeholder="Ex. React, Angular, NodeJs, MySQL, etc."
                 required
                 onChange={(event) => setJobDesc(event.target.value)}
@@ -117,7 +124,7 @@ function AddNewInterview() {
   
             <div className="my-3">
               <label>Years of Experience</label>
-              <Input
+              <Input className="bg-zinc-900 border-none"
                 placeholder="Ex. 5"
                 type="number"
                 max="100"
@@ -130,6 +137,7 @@ function AddNewInterview() {
               <Button
                 type="button"
                 variant="ghost"
+                className="bg-zinc-900"
                 onClick={() => setOpenDialog(false)}
               >
                 Cancel

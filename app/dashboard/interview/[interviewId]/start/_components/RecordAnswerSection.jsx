@@ -89,33 +89,40 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
       }
 
   return (
-    <div className='flex items-center justify-center flex-col'>
-        <div className='flex flex-col mt-20 justify-center items-center  bg-blue-100  rounded-lg p-5'>
+    <div className='flex items-center justify-center  flex-col h-screen -mt-14 -ml-52' >
+      
+
+        <div className='flex flex-col  justify-center items-center  bg-gray-900   rounded-sm p-5'>
         <Image src={'/offcamera.png'} width={200} height={200}
-            className='absolute z-20'/>
+            className='absolute  rounded-sm'/>
             <Webcam 
+            className='rounded-md'
             mirrored={true}
             style={{
-                height:300,
-                width:'100%',
+                height:400,
+                width:600,
                 zIndex:10,
             }}
             />
         </div>
+
         <Button 
         disabled={loading}
-        variant="outline" className="my-10"
+        variant="outline" className="my-10 bg-slate-600"
         onClick={StartStopRecording}
         >
             {isRecording?
-            <h2 className='text-red-600 animate-pulse flex gap-2 items-center'>
+            <h2 className='text-red-600  animate-pulse flex gap-2 items-center'>
                 <StopCircle/>Stop Recording
             </h2>
              :
-             <h2 className='text-primary gap-2 items-center'>
+             <h2 className='text-gray-200  gap-2 flex'>
                 <Mic/> Record Answer
              </h2>}</Button>
         {/* <Button onClick={()=>console.log(userAnswer)}>Show User Answer</Button> */}
+
+              
+
     </div>
   )
 }
