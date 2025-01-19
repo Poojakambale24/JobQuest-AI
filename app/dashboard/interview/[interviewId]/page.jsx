@@ -7,7 +7,7 @@ import { Lightbulb, WebcamIcon } from 'lucide-react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import Webcam from 'react-webcam';
-
+import InterviewList from './_components/InterviewList.jsx';
 function Interview({params}) {
 
     const [interviewData,setInterviewData]=useState();
@@ -16,19 +16,12 @@ function Interview({params}) {
         console.log(params.interviewId);
         GetInterviewDetails();
     },[])
-
-    /**
-     * used to get interview Details by MockId/Interview Id
-     */
-
         const GetInterviewDetails=async()=>{
             const result=await db.select().from(MockInterview)
             .where(eq(MockInterview.mockId,params.interviewId))
 
             setInterviewData(result[0]);
         }
-
-
   return (
     <div className='my-10 bg-gray-800 border rounded-lg p-8 '>
         <h2 className='font-bold text-stone-300 text-2xl '>Let's Get Started</h2>

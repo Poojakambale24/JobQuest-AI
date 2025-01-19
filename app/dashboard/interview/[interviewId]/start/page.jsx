@@ -9,29 +9,12 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 function StartInterview({params}) {
-
     const [interviewData,setInterviewData]=useState();
     const [mockInterviewQuestion,setMockInterviewQuestion]=useState();
     const [activeQuestionIndex,setActiveQuestionIndex]=useState(0);
     useEffect(()=>{
         GetInterviewDetails();
     },[])
-
-       /**
-     * used to get interview Details by MockId/Interview Id
-     */
-
-    //    const GetInterviewDetails=async()=>{
-    //     const result=await db.select().from(MockInterview)
-    //     .where(eq(MockInterview.mockId,params.interviewId))
-
-    //     const jsonMockResp=JSON.parse(result[0].jsonMockResp)
-    //     console.log(jsonMockResp);
-    //     setMockInterviewQuestion(jsonMockResp);
-    //     setInterviewData(result[0]);
-    // }
-
-    
     const GetInterviewDetails = async () => {
         const result = await db.select().from(MockInterview)
         .where(eq(MockInterview.mockId, params.interviewId));
@@ -42,7 +25,6 @@ function StartInterview({params}) {
         setMockInterviewQuestion(interviewQuestions);
         setInterviewData(result[0]);
     }
-
   return (
     <div className='bg-gray-800 border rounded-lg '>
         <div className='grid grid-cols-1 md:grid-cols-1 m-4 gap-4 w-full -mt-8'>

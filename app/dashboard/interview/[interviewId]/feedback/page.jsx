@@ -11,13 +11,9 @@ import {
 import { ChevronsUpDownIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
-
-  
-
 function Feedback({params}) {
     const [feedbackList,setFeedbackList]=useState([]);
     const router=useRouter();
-
     useEffect(()=>{
         GetFeedback();
     },[])
@@ -35,7 +31,6 @@ function Feedback({params}) {
         <h2 className='font-bold text-xl  text-gray-500'>🚫📄 No interview feedback Recorded Found</h2>
         :
         <>
-      
         <h2 className='text-3xl font-bold text-center text-[#1d85b1]'>🎉Congratulations!</h2>
         <h2 className='font-bold text-2xl text-center text-[#7DD3FC]'>💬 Here is your interview Feedback</h2>
         <h2 className='  text-lg my-3 text-center text-[#FACC15]'>⭐ Your overall interview rating: <strong> 7/10</strong></h2>
@@ -52,8 +47,7 @@ function Feedback({params}) {
                 <h2 className='p-2 border rounded-lg bg-blue  text-sm text-[#94A3B8]'><strong className='text-stone-300'>Feedback: </strong>{item.feedback}</h2>
              </div>
             </CollapsibleContent>
-          </Collapsible>
-          
+          </Collapsible>    
          ))}  
          </>}
          <Button onClick={()=>router.replace('/dashboard')} className="border bg-slate-950 text-zinc-300 hover:text-black hover:bg-slate-700 ">Go Home</Button>

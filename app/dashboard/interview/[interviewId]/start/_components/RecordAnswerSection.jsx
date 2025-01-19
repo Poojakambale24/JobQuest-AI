@@ -11,8 +11,6 @@ import React, { useEffect, useState } from 'react'
 import useSpeechToText from 'react-hook-speech-to-text'
 import Webcam from 'react-webcam'
 import { toast } from 'sonner'
-
-
 function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, interviewData }) {
     const [userAnswer, setUserAnswer] = useState("");
     const {user}=useUser();
@@ -29,8 +27,6 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
         continuous: true,
         useLegacyResults: false
       });
-
-
       useEffect(()=>{
         results.map((result)=>(
             setUserAnswer(prevAns=>prevAns+result?.transcript)
@@ -45,25 +41,21 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
       },[userAnswer,isRecording])
 
       const StartStopRecording=async()=>{
-        if(isRecording){
-        
-            stopSpeechToText();          
-           
+        if(isRecording){ 
+            stopSpeechToText();               
         }
         else{
             startSpeechToText();
         }
       }
-
-      const UpdateUserAnswer=async()=>{
+       const UpdateUserAnswer=async()=>{
         console.log(userAnswer)
         setLoading(true)
         const feedbackPrompt = "Question:" + mockInterviewQuestion[activeQuestionIndex]?.question +
         ", User Answer:" + userAnswer + ", Depends on question and user answer for give interview question " +
         "please give us rating for answer and feedback as area of improvement if any " +
         "in just 3 to 5 lines to improve it in JSON format with rating field and feedback field.";
-    
-
+  
         const result=await chatSession.sendMessage(feedbackPrompt);
         const MockJsonResp=( result.response.text()).replace('```json',' ').replace('```',' ');
         console.log(MockJsonResp);
@@ -120,8 +112,6 @@ function RecordAnswerSection({ mockInterviewQuestion, activeQuestionIndex, inter
                 <Mic/> Record Answer
              </h2>}</Button>
         {/* <Button onClick={()=>console.log(userAnswer)}>Show User Answer</Button> */}
-
-              
 
     </div>
   )

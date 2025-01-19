@@ -1,19 +1,11 @@
 "use client"
-
 import Head from 'next/head';
 import { useRouter } from 'next/navigation';
-
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
-
-
-// Navigate to the sign-in page (login page)
 const handleNavigation = () => {
   router.push("/auth/sign-in");
 };
-
 export default function Home() {
-
 const router = useRouter();
   return (
     <>
@@ -69,13 +61,6 @@ const router = useRouter();
                Start Your Interview Prep✨ 
             </button>
           </div>
-
-          {/* <div className='mt-5 text-center items-center'>
-        <div className='justify-center items-center gap-2 ml-10'>
-          <h2 className="ml-6 text-xl font-bold font-serif text-transparent bg-clip-text bg-gradient-to-r from-slate-400 via-purple-950 to-pink-400 animate-magic">JQ</h2>
-          <h6 className='border-2 border-y-slate-700 ml-6 rounded-sm h-4 w-8 text-xs font-bold flex justify-center items-center text-primary bg-zinc-900'>AI</h6>
-        </div>
-      </div> */}
 
           {/* Right side animated image */}
           <div className="w-1/2 flex justify-end mr-20 ">
