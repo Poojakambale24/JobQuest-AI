@@ -7,7 +7,7 @@ import { Lightbulb, WebcamIcon } from 'lucide-react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import Webcam from 'react-webcam';
-import InterviewList from './_components/InterviewList.jsx';
+
 function Interview({params}) {
 
     const [interviewData,setInterviewData]=useState();

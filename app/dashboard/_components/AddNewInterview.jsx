@@ -37,7 +37,7 @@ function AddNewInterview() {
      ", Years of experience: "+jobExperience+
      ", Depends on Job Position,Job Description & Years of Experience give us "+process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT+" Interview questions along with answers in JSON format.";
     const result = await chatSession.sendMessage(InputPrompt);
-    const MockJsonResp=(result.response.text()).replace('```json',' ').replace('```',' ');
+    const MockJsonResp=(result.response.text()).replace('```json', ' ').replace('```', ' ');;
     console.log(JSON.parse(MockJsonResp));
     setJsonResponse(MockJsonResp);
     if(MockJsonResp){
