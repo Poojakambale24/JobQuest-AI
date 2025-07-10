@@ -1,12 +1,29 @@
 "use client"
 import Head from 'next/head';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 const handleNavigation = () => {
   router.push("/auth/sign-in");
 };
+
+
+// const Page = () => {
+//   const [isLoggedIn, setIsLoggedIn] = useState(false); // Correct usage inside a function component
+
+//   const toggleLogin = () => {
+//     setIsLoggedIn(!isLoggedIn);
+//   };
+
+
 export default function Home() {
 const router = useRouter();
+const [isLoggedIn, setIsLoggedIn] = useState(false); // Correct usage inside a function component
+
+const toggleLogin = () => {
+  setIsLoggedIn(!isLoggedIn);
+};
+
   return (
     <>
       <Head>
@@ -16,7 +33,7 @@ const router = useRouter();
         <link rel="icon" href="/JQLogo.png" type='image/png' />
       </Head>
 
-      <header className='sticky top-0 flex gap-10 p-5 items-center justify-between bg-transparent border border-gray-900 shadow-sm ' >
+      <header className='sticky top-0 flex gap-2 p-5 items-center justify-between bg-transparent border border-gray-900 shadow-sm ' >
   
       <div className='justify-center items-center gap-2 ml-5  '>
            <h2 className="text-xl font-bold font-serif text-transparent bg-clip-text bg-gradient-to-r
@@ -26,24 +43,36 @@ const router = useRouter();
            flex justify-center items-center text-primary bg-zinc-900 '>AI</h6>
     </div>
 
-      <div className='flex justify-end'>
-      <ul className='hidden md:flex  gap-6 font-bold text-gray-400'>
-        <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer `}>Dashboard</li>
-        <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer `}>Questions</li>
-        <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer `}>Features</li>
-        <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer `}>How it Works?</li>
-      </ul>
-      </div>
+    <div className='flex justify-center items-center w-full -mr-96'>
+  <ul className='flex gap-6 font-bold text-gray-400'>
+    <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer`}>Dashboard</li>
+    <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer`}>Questions</li>
+    <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer`}>Features</li>
+    <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer`}>How it Works?</li>
+  </ul>
+</div>
 
-        {/* Header Actions (Sign Up button and theme toggle) */}
-        <div className="header-actions flex items-center space-x-4">
-          <button
-           onClick={()=>router.replace('/dashboard')}
-            className="bg-gray-300 text-black py-2 px-4 rounded-md"
-          >
-            Sign in
-          </button>
-        </div>
+
+<div className='flex justify-end items-center space-x-4 w-full'>
+  <div className='header-actions flex items-center'>
+    <button
+      onClick={toggleLogin}
+      className="bg-gray-300 text-black py-2 px-6 rounded-md"
+    >
+      {isLoggedIn ? "Logout" : "Login"}
+    </button>
+  </div>
+
+  <div className="header-actions flex items-center">
+    <button
+      onClick={() => router.replace('/dashboard')}
+      className="bg-gray-300 text-black py-2 px-4 rounded-md"
+    >
+      Sign UP
+    </button>
+  </div>
+</div>
+
       </header>
 
       <div className="bg-gradient-to-b  min-h-screen flex items-center justify-center text-white ">
@@ -233,7 +262,8 @@ const router = useRouter();
     </>
     
   );
-}
+};
+
 
 
 
